@@ -3,10 +3,10 @@ Replica della grafica con la possibilità di avere messaggi scritti dall’utent
 Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto
 Font family: Lato
 Colori:
-colore sfondo body verde: #009688
-colore sfondo body grigio: #DBDBD2
-colore notifiche: #8EDAFC
-colore grigio sfondo header colonne: #E6DFD6
-colore sfondo barra invio messaggio: #F3EEEA
-colore effetto hover contatto: #F4F5F5
-colore sfondo input ricerca contatto: #FAFAFA
+colore sfondo body verde: #009688 ---
+colore sfondo body grigio: #DBDBD2 ---
+colore notifiche: #8EDAFC ---
+colore grigio sfondo header colonne: #E6DFD6 ---
+colore sfondo barra invio messaggio: #F3EEEA ---
+colore effetto hover contatto: #F4F5F5 ---
+colore sfondo input ricerca contatto: #FAFAFA ---
