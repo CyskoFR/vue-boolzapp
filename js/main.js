@@ -2,6 +2,7 @@
 const app = new Vue({
     el: `#app`,
     data: {
+        currentIndex: 0,
         contacts: [
             {
                 name: 'Michele',
@@ -167,7 +168,9 @@ const app = new Vue({
         ]
     },
     methods: {
-
+        imgIndex(index) {
+            this.currentIndex = index;
+        },
     }
 });
 //   /VueJS

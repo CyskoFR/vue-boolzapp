@@ -10,3 +10,7 @@ colore grigio sfondo header colonne: #E6DFD6 ---
 colore sfondo barra invio messaggio: #F3EEEA ---
 colore effetto hover contatto: #F4F5F5 ---
 colore sfondo input ricerca contatto: #FAFAFA ---
+
+Milestone 2
+● Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i messaggi relativi al contatto attivo all’interno del pannello della conversazione
+● Click sul contatto mostra la conversazione del contatto cliccato

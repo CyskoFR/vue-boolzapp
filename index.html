@@ -47,21 +47,30 @@
                 <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
                 <input class="search-input" type="text" placeholder="Cerca o inizia una nuova chat">
             </div>
+
             <div class="contacts-scroll">
-                <div class="contact" v-for="contact in contacts">
-                    <img :src=`img/avatar${contact.avatar}.jpg` alt="avatar-img">
-                    <div class="text">
+                <div class="contact" v-for="(contact, i) in contacts" @click="imgIndex(i)">
+                    <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                    <div class="contact-text">
                         <h3>{{contact.name}}</h3>
-                        <p>asd</p>
+                        <p>Ultimo messaggio inviato</p>
                     </div>
+                    <div class="contact_last-message-time">12:00</div>
                 </div>
             </div>
+
         </div>
         
         <div class="main-screen">
 
             <div class="active-contact-tab">
-                <div class="selected-contact_info"></div>
+                <div class="selected-contact_info">
+                    <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`" :alt="`${contacts[currentIndex].name} img`">
+                    <div class="selected-contact_text">
+                        <h3>{{contacts[currentIndex].name}}</h3>
+                        <p>Ultimo accesso oggi alle 12:00</p>
+                    </div>
+                </div>
                 <div class="selected-contact_buttons">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <i class="fa-solid fa-paperclip"></i>
@@ -70,11 +79,15 @@
             </div>
 
             <div class="chat-container">
-                <div class="my-chat_column">
-                    <div class="my-message">ciao</div>
-                </div>
-                <div class="user-chat_column">
-                    <div class="user-message">2313</div>
+                <div class="chat_row" v-for="(message, i) in contacts[currentIndex].messages">
+                    <div class="my-message" v-if="message.status === 'sent'">
+                        <p class="message">{{message.message}}</p>
+                        <p class="message-time"></p>
+                    </div>
+                    <div class="user-message" v-else>
+                        <p class="message">{{message.message}}</p>
+                        <p class="message-time"></p>
+                    </div>
                 </div>
             </div>
 
@@ -83,6 +96,7 @@
                 <input class="input-bar_message-input" type="text" placeholder="Scrivi un messaggio">
                 <i class="fa-solid fa-microphone rec-button"></i>
             </div>
+
         </div>
     </div>
     <!-- Vue CDN -->

@@ -6,7 +6,6 @@
 }
 
 body {
-    height: 100vh;
     background: linear-gradient(#009688 15%, #DBDBD2 15%);
 }
 
@@ -14,8 +13,9 @@ body {
     display: flex;
     width: 80vw;
     height: calc(100vh - 40px);
-    margin: auto;
-    padding-top: 40px;
+    margin: 20px auto;
+    box-shadow: 1px 1px 2px lightgrey;
+    background-color: white;
 }
 
 .sidebar {
@@ -62,6 +62,10 @@ body {
     cursor: pointer;
 }
 
+.notification-tab_text-box a:hover, .avatar-box_buttons i:hover, .selected-contact_buttons i:hover, .input-bar i:hover {
+    color: rgb(69, 69, 69)
+}
+
 .notification-tab {
     display: flex;
     align-items: center;
@@ -80,6 +84,7 @@ body {
 
 .notification-tab_text-box a {
     color: rgb(101, 101, 101);
+    font-size: 14px;
 }
 
 .search-tab {
@@ -135,22 +140,29 @@ body {
     background-color: #F4F5F5;
 }
 
-.contact .text {
+.contact .contact-text, .selected-contact_text {
     margin: 0 16px;
+    flex-grow: 1;
 }
 
 .contact h3 {
     font-size: 16px;
 }
 
-.contact p {
-    font-size: 14px;
-    color: grey;
+.contact p, .selected-contact_info p {
+    font-size: 12px;
+    margin-top: 4px;
+    color: rgb(159, 159, 159);
 }
 
-.contact img {
+.contact img, .selected-contact_info img {
     height: 100%;
     border-radius: 50%;
+}
+
+.contact .contact_last-message-time {
+    font-size: 10px;
+    color: #b1b1b1;
 }
 
 .main-screen {
@@ -170,6 +182,14 @@ body {
     padding: 16px;
 }
 
+.selected-contact_info {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.40);
+    padding: 10px 6px;
+}
+
 .active-contact-tab i {
     margin: 0 5px;
     color: #b1b1b1;
@@ -178,29 +198,34 @@ body {
 
 .chat-container {
     display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
     flex-grow: 1;
     background-image: url(../img/mine.jpg);
     background-position: center;
     overflow: auto;
 }
 
-.my-chat_column, .user-chat_column {
-    width: 50%;
-    padding: 30px 40px;
+.chat_row {
+    display: flex;
+    margin: 30px 40px 0;
+    width: 100%
 }
 
 .my-message, .user-message {
-    padding: 16px 10px;
+    padding: 18px 24px;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 16px;
+    max-width: 65%;
 }
 
 .my-message {
-    background-color: white;
+    justify-self: flex-end;  /* BUG */
+    background-color: #d5f9ba;
 }
 
 .user-message {
-    background-color: #d5f9ba;
+    background-color: white;
 }
 
 .input-bar {
