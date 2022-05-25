@@ -212,22 +212,22 @@ body {
     width: 100%;
 }
 
-.my-message, .user-message {
+.chat-box {
     padding: 18px 24px;
     border-radius: 6px;
     font-size: 16px;
     max-width: 65%;
 }
 
-.my-message {
-    background-color: #d5f9ba;
-}
-
 .sent {
     justify-content: flex-end;
 }
 
-.user-message {
+.sent .chat-box {
+    background-color: #d5f9ba;
+}
+
+.received .chat-box {
     background-color: white;
 }
 

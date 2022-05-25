@@ -80,11 +80,7 @@
 
             <div class="chat-container">
                 <div class="chat_row" v-for="(message, i) in contacts[currentIndex].messages" :class="message.status === 'sent' ? 'sent' : 'received'">
-                    <div class="my-message" v-if="message.status === 'sent'">
-                        <p class="message">{{message.message}}</p>
-                        <p class="message-time"></p>
-                    </div>
-                    <div class="user-message" v-else>
+                    <div class="chat-box">
                         <p class="message">{{message.message}}</p>
                         <p class="message-time"></p>
                     </div>
