@@ -209,7 +209,8 @@ body {
 .chat_row {
     display: flex;
     margin: 30px 40px 0;
-    width: 100%
+    width: 100%;
+    justify-content: flex-end;
 }
 
 .my-message, .user-message {
@@ -220,7 +221,7 @@ body {
 }
 
 .my-message {
-    justify-self: flex-end;  /* BUG */
+    /* justify-self: flex-end;  BUG */
     background-color: #d5f9ba;
 }
 
