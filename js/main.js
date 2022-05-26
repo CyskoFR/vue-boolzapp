@@ -164,13 +164,27 @@ const app = new Vue({
                         status: 'received'
                     }
                 ],
-            }
+            },
         ]
     },
     methods: {
-        imgIndex(index) {
+        contactIndex(index) {
             this.currentIndex = index;
         },
-    }
+        getLastMessage(contact) {
+            const lastMess = contact.messages[contact.messages.length - 1].message;
+            return lastMess;
+        },
+        getLastMessageTime(contact) {
+            const DateTime = luxon.DateTime;
+            const mess = contact.messages[contact.messages.length - 1];
+            return DateTime.fromFormat(mess.date, "dd/MM/yyyy HH:mm:ss").toFormat('HH:mm');
+        },
+        convertMessageTime(date) {
+            const DateTime = luxon.DateTime;
+            const messTime = date;
+            return DateTime.fromFormat(messTime, "dd/MM/yyyy HH:mm:ss").toFormat('HH:mm');
+        },
+    },
 });
 //   /VueJS

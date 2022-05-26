@@ -49,13 +49,13 @@
             </div>
 
             <div class="contacts-scroll">
-                <div class="contact" v-for="(contact, i) in contacts" @click="imgIndex(i)">
+                <div class="contact" v-for="(contact, i) in contacts" @click="contactIndex(i)">
                     <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                     <div class="contact-text">
                         <h3>{{contact.name}}</h3>
-                        <p>Ultimo messaggio inviato</p>
+                        <p>{{getLastMessage(contact)}}</p>
                     </div>
-                    <div class="contact_last-message-time">12:00</div>
+                    <div class="contact_last-message-time">{{getLastMessageTime(contact)}}</div>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                     <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`" :alt="`${contacts[currentIndex].name} img`">
                     <div class="selected-contact_text">
                         <h3>{{contacts[currentIndex].name}}</h3>
-                        <p>Ultimo accesso oggi alle 12:00</p>
+                        <p>{{`Ultimo accesso oggi alle ${getLastMessageTime(contacts[currentIndex])}`}}</p>
                     </div>
                 </div>
                 <div class="selected-contact_buttons">
@@ -82,7 +82,7 @@
                 <div class="chat_row" v-for="(message, i) in contacts[currentIndex].messages" :class="message.status === 'sent' ? 'sent' : 'received'">
                     <div class="chat-box">
                         <p class="message">{{message.message}}</p>
-                        <p class="message-time"></p>
+                        <p class="message-time">{{convertMessageTime(message.date)}}</p>
                     </div>
                 </div>
             </div>
@@ -95,9 +95,15 @@
 
         </div>
     </div>
+
+    <!-- Luxon CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.4.0/build/global/luxon.min.js"></script>
+    <!-- /Luxon CDN-->
+
     <!-- Vue CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- /Vue CDN -->
+
     <script src="js/main.js"></script>
 </body>
 </html>
