@@ -22,8 +22,8 @@
             <div class="user-tab">
                 <div class="avatar-box">
                     <div class="avatar-box_user">
-                        <img src="img/avatar_io.jpg" alt="avatar_io.jpg">
-                        <p>Sofia</p>
+                        <img src="img/D3 minimal.jpg" alt="avatar_io.jpg">
+                        <p>Cysko</p>
                     </div>
                     <div class="avatar-box_buttons">
                         <i class="fa-solid fa-circle-notch"></i>
@@ -68,7 +68,7 @@
                     <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`" :alt="`${contacts[currentIndex].name} img`">
                     <div class="selected-contact_text">
                         <h3>{{contacts[currentIndex].name}}</h3>
-                        <p>{{`Ultimo accesso oggi alle ${getLastMessageTime(contacts[currentIndex])}`}}</p>
+                        <p>{{getLastUserMessageTime(contacts[currentIndex].messages)}}</p>
                     </div>
                 </div>
                 <div class="selected-contact_buttons">
@@ -89,7 +89,7 @@
 
             <div class="input-bar">
                 <i class="fa-regular fa-face-smile emoji-button"></i>
-                <input class="input-bar_message-input" type="text" placeholder="Scrivi un messaggio">
+                <input class="input-bar_message-input" type="text" placeholder="Scrivi un messaggio" v-model="messageInput" @keyup.enter="addNewMessage(contacts[currentIndex])">
                 <i class="fa-solid fa-microphone rec-button"></i>
             </div>
 

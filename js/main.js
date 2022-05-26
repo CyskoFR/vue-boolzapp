@@ -3,6 +3,7 @@ const app = new Vue({
     el: `#app`,
     data: {
         currentIndex: 0,
+        messageInput: "",
         contacts: [
             {
                 name: 'Michele',
@@ -180,10 +181,33 @@ const app = new Vue({
             const mess = contact.messages[contact.messages.length - 1];
             return DateTime.fromFormat(mess.date, "dd/MM/yyyy HH:mm:ss").toFormat('HH:mm');
         },
+        getLastUserMessageTime(messages) {
+            const DateTime = luxon.DateTime;
+            for (let i = messages.length - 1; i >= 0; i--) {
+                if (messages[i].status === 'received') {
+                    return `Ultimo accesso il ${DateTime.fromFormat(messages[i].date, "dd/MM/yyyy HH:mm:ss").toFormat('dd/MM/yyyy')} alle ${DateTime.fromFormat(messages[i].date, "dd/MM/yyyy HH:mm:ss").toFormat('HH:mm')}`;
+                }
+                // console.log(messages)
+            }
+        },
         convertMessageTime(date) {
             const DateTime = luxon.DateTime;
             const messTime = date;
             return DateTime.fromFormat(messTime, "dd/MM/yyyy HH:mm:ss").toFormat('HH:mm');
+        },
+        addNewMessage(index) {
+            if(this.messageInput !== "") {
+                let today = new Date();
+                let date = ('0' + today.getDate()).slice(-2) +'/'+('0' + (today.getMonth()+1)).slice(-2)+'/'+today.getFullYear();
+                let time = ('0' + today.getHours()).slice(-2) + ":"+('0' + today.getMinutes()).slice(-2) + ":" + ('0' + today.getSeconds()).slice(-2);
+                let dateTime = `${date} ${time}`; 
+                index.messages.push({
+                    date: dateTime,
+                    message: this.messageInput,
+                    status: 'sent',
+                })
+                this.messageInput = "";
+            };
         },
     },
 });
