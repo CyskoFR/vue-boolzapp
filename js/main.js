@@ -4,6 +4,7 @@ const app = new Vue({
     data: {
         currentIndex: 0,
         messageInput: "",
+        filteredName: "",
         contacts: [
             {
                 name: 'Michele',
@@ -206,13 +207,21 @@ const app = new Vue({
                     status: 'sent',
                 })
                 this.messageInput = "";
-                setTimeout(index.messages.push({
+                setTimeout(() => {
+                    index.messages.push({
                     date: dateTime,
                     message: "È molto bello.",
                     status: 'received',
-                }), 3000);
+                })
+                } , 3000);
             };
         },
+    },
+    computed: {
+        filter() {
+            return this.contacts.filter((elm) => 
+            elm.name.toLowerCase().includes(this.filteredName))
+        }
     },
 });
 //   /VueJS
