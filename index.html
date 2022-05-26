@@ -68,7 +68,7 @@
                     <img :src="`img/avatar${contacts[currentIndex].avatar}.jpg`" :alt="`${contacts[currentIndex].name} img`">
                     <div class="selected-contact_text">
                         <h3>{{contacts[currentIndex].name}}</h3>
-                        <p>{{getLastUserMessageTime(contacts[currentIndex].messages)}}</p>
+                        <p>{{getUserLastMessageTime(contacts[currentIndex].messages)}}</p>
                     </div>
                 </div>
                 <div class="selected-contact_buttons">

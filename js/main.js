@@ -181,13 +181,12 @@ const app = new Vue({
             const mess = contact.messages[contact.messages.length - 1];
             return DateTime.fromFormat(mess.date, "dd/MM/yyyy HH:mm:ss").toFormat('HH:mm');
         },
-        getLastUserMessageTime(messages) {
+        getUserLastMessageTime(messages) {
             const DateTime = luxon.DateTime;
             for (let i = messages.length - 1; i >= 0; i--) {
                 if (messages[i].status === 'received') {
                     return `Ultimo accesso il ${DateTime.fromFormat(messages[i].date, "dd/MM/yyyy HH:mm:ss").toFormat('dd/MM/yyyy')} alle ${DateTime.fromFormat(messages[i].date, "dd/MM/yyyy HH:mm:ss").toFormat('HH:mm')}`;
                 }
-                // console.log(messages)
             }
         },
         convertMessageTime(date) {
@@ -207,6 +206,11 @@ const app = new Vue({
                     status: 'sent',
                 })
                 this.messageInput = "";
+                setTimeout(index.messages.push({
+                    date: dateTime,
+                    message: "È molto bello.",
+                    status: 'received',
+                }), 3000);
             };
         },
     },
