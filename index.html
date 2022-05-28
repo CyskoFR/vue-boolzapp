@@ -45,11 +45,11 @@
 
             <div class="search-tab">
                 <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input class="search-input" type="text" placeholder="Cerca o inizia una nuova chat">
+                <input class="search-input" type="text" placeholder="Cerca o inizia una nuova chat" v-model="filteredName" @keyup.enter="filter()">
             </div>
 
             <div class="contacts-scroll">
-                <div class="contact" v-for="(contact, i) in contacts" @click="contactIndex(i)">
+                <div class="contact" v-for="(contact, i) in filter" @click="contactIndex(i)" :class="currentIndex === contacts.indexOf(contact) ? 'active_contact' : null">
                     <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                     <div class="contact-text">
                         <h3>{{contact.name}}</h3>

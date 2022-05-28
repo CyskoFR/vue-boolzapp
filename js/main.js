@@ -169,6 +169,7 @@ const app = new Vue({
             },
         ]
     },
+
     methods: {
         contactIndex(index) {
             this.currentIndex = index;
@@ -213,14 +214,14 @@ const app = new Vue({
                     message: "È molto bello.",
                     status: 'received',
                 })
-                } , 3000);
+                } , 2000);
             };
         },
     },
+    
     computed: {
         filter() {
-            return this.contacts.filter((elm) => 
-            elm.name.toLowerCase().includes(this.filteredName))
+            return this.contacts.filter((e) => e.name.toLowerCase().includes(this.filteredName.toLowerCase()));
         }
     },
 });
