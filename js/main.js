@@ -197,7 +197,7 @@ const app = new Vue({
             return DateTime.fromFormat(messTime, "dd/MM/yyyy HH:mm:ss").toFormat('HH:mm');
         },
         addNewMessage(index) {
-            if(this.messageInput !== "") {
+            if(this.messageInput !== "" && this.messageInput.trim()) {
                 let today = new Date();
                 let date = ('0' + today.getDate()).slice(-2) +'/'+('0' + (today.getMonth()+1)).slice(-2)+'/'+today.getFullYear();
                 let time = ('0' + today.getHours()).slice(-2) + ":"+('0' + today.getMinutes()).slice(-2) + ":" + ('0' + today.getSeconds()).slice(-2);
@@ -217,12 +217,19 @@ const app = new Vue({
                 } , 2000);
             };
         },
-    },
-    
-    computed: {
+        scrollToEnd: function() {    	
+            const container = this.$el.querySelector("#chat-container");
+            container.scrollTop = container.scrollHeight;
+        },
         filter() {
-            return this.contacts.filter((e) => e.name.toLowerCase().includes(this.filteredName.toLowerCase()));
-        }
+            this.contacts.forEach(e => {
+                if(e.name.toLowerCase().includes(this.filteredName.toLowerCase())) {
+                    e.visible = true;
+                } else {
+                    e.visible = false;
+                }
+            });
+        },
     },
 });
 //   /VueJS
